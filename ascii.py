@@ -46,7 +46,7 @@ def img_to_ascii(mat):
 
 
 def blur_img(img):
-    kernel_size = (5, 5)
+    kernel_size = (3, 3)
     return cv2.blur(img, kernel_size)
 
 
