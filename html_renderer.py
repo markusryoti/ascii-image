@@ -5,9 +5,14 @@ class HtmlRenderer:
     def __init__(self):
         self.html_name = 'ascii.html'
         self.html_template = 'template.html'
-        self.soup = BeautifulSoup(self.read_template(), 'html.parser')
+        self.soup = BeautifulSoup(self._read_template(), 'html.parser')
 
-    def img_to_html(self, img):
+    def render(self, img):
+        img_as_html = self._img_to_html(img)
+        self.soup.find_all(id='render')[0].append(img_as_html)
+        self._write_file()
+
+    def _img_to_html(self, img):
         img_tag = self.soup.new_tag('div')
         img_tag['class'] = 'img'
         for row in img:
@@ -25,16 +30,11 @@ class HtmlRenderer:
         span['class'] = 'pixel'
         return span
 
-    def render(self, img):
-        img_as_html = self.img_to_html(img)
-        self.soup.find_all(id='render')[0].append(img_as_html)
-        self.write_file()
-
-    def read_template(self):
+    def _read_template(self):
         with open(self.html_template, 'r') as f:
             content = f.read()
         return content
 
-    def write_file(self):
+    def _write_file(self):
         with open(self.html_name, 'w') as f:
             f.write(self.soup.prettify())

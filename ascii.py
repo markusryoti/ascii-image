@@ -11,18 +11,21 @@ IMG_WIDTH = 128
 
 def pixel_to_ascii(num):
     '''
-    This is probably the most important piece of the puzzle. The image should probably be filtered somehow to reduce the number of varying pixels
+    This is probably the most important piece of the puzzle. The image should probably be filtered somehow to reduce the number of varying pixels.
     '''
-    if num < 33:
-        return chr(33)
-    if num > 126:
-        return chr(126)
-    return chr(num)
+    return chr(get_scaled_value(num))
+
+
+def get_scaled_value(num):
+    '''
+    Converts pixel value (0-255) to valid ascii value (33-126).
+    '''
+    return int((num / 255) * (126 - 33) + 33)
 
 
 def print_ascii_image(mat):
     '''
-    Print image matrix to terminal, converting each pixel to ascii value
+    Print image matrix to terminal, converting each pixel to ascii value.
     '''
     n_rows, n_cols = mat.shape
     for i in range(n_rows):
@@ -77,8 +80,7 @@ if __name__ == '__main__':
     resized = resize_img(blurred_img)
     ascii_img = img_to_ascii(resized)
 
-    # show_compare(orig_img, resized)
-    # print_ascii_image(resized)
+    show_compare(orig_img, resized)
 
     html_renderer = HtmlRenderer()
     html_renderer.render(ascii_img)

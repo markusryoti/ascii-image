@@ -2,3 +2,4 @@ imgs/
 __pycache__/
 ascii.html
 .vscode/
+tests/reports/
