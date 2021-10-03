@@ -9,12 +9,21 @@ class HtmlRenderer:
 
     def img_to_html(self, img):
         img_tag = self.soup.new_tag('div')
+        img_tag['class'] = 'img'
         for row in img:
             row_element = self.soup.new_tag('div')
-            row_text = ''.join(map(lambda x: str(x), row))
-            row_element.append(row_text)
+            row_element['class'] = 'row'
+            for pixel in row:
+                span = self._create_span(pixel.decode('utf-8'))
+                row_element.append(span)
             img_tag.append(row_element)
         return img_tag
+
+    def _create_span(self, pixel):
+        span = self.soup.new_tag('span')
+        span.append(pixel)
+        span['class'] = 'pixel'
+        return span
 
     def render(self, img):
         img_as_html = self.img_to_html(img)

@@ -6,8 +6,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Ascii</title>
 		<style>
-			div div {
-				font-size: 6px;
+			:root {
+				--pixel-size: 9px;
+				--font-size: 9px;
+			}
+
+			#render {
+				display: flex;
+				justify-content: center;
+			}
+
+			.img {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.row {
+				display: flex;
+			}
+
+			.pixel {
+				width: var(--pixel-size);
+				height: var(--pixel-size);
+				font-size: var(--font-size);
+				text-align: center;
 			}
 		</style>
 	</head>

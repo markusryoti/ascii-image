@@ -5,6 +5,9 @@ from matplotlib import pyplot as plt
 
 from html_renderer import HtmlRenderer
 
+IMG_HEIGHT = 128
+IMG_WIDTH = 128
+
 
 def pixel_to_ascii(num):
     '''
@@ -45,7 +48,7 @@ def blur_img(img):
 
 
 def resize_img(img):
-    return cv2.resize(img, [96, 96])
+    return cv2.resize(img, [IMG_HEIGHT, IMG_WIDTH])
 
 
 def show_img(img):
@@ -72,10 +75,10 @@ if __name__ == '__main__':
     blurred_img = blur_img(orig_img)
 
     resized = resize_img(blurred_img)
-    ascii = img_to_ascii(resized)
+    ascii_img = img_to_ascii(resized)
 
     # show_compare(orig_img, resized)
     # print_ascii_image(resized)
 
     html_renderer = HtmlRenderer()
-    html_renderer.render(ascii)
+    html_renderer.render(ascii_img)
