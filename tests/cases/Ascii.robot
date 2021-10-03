@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation   Test ascii value generation from pixels
+Resource        ../Global.robot
 Library         BuiltIn
-Library         tests.lib.Ascii
 
 *** Test Cases ***
 Pixel value 0 is scaled to 33
