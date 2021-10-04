@@ -1,2 +1,2 @@
 *** Settings ***
-Library   tests.lib.Ascii
+Library   Ascii
