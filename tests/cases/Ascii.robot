@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation   Test ascii value generation from pixels
-Resource        ../Global.robot
+Resource        Global.robot
 Library         BuiltIn
 
 *** Test Cases ***
