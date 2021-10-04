@@ -3,3 +3,4 @@ __pycache__/
 ascii.html
 .vscode/
 tests/reports/
+tests/lib/config.cfg
